@@ -1,6 +1,6 @@
 ﻿using BepInEx;
 using HarmonyLib;
-using UnityEngine;
+using LaunchPadBooster;
 
 namespace Space_Duct_Tape
 {
@@ -12,11 +12,13 @@ namespace Space_Duct_Tape
         public const string VERSION = "1.0.0";
 
         private Harmony _harmony;
+        private Mod _mod;
 
         private void Awake()
         {
             Logger.LogInfo($"{NAME} v{VERSION} is loading...");
 
+            _mod = new Mod(NAME, VERSION);
             _harmony = new Harmony(GUID);
 
             try

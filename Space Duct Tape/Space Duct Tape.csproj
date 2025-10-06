@@ -1,45 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-	<PropertyGroup>
-		<TargetFramework>net472</TargetFramework>
-		<LangVersion>9</LangVersion>
-		<Nullable>enable</Nullable>
-		<DestinationFolder>C:\Users\MonoToast\Documents\My Games\Stationeers\mods\</DestinationFolder>
-		<GameFolder>C:\SteamLibrary\steamapps\common\Stationeers\rocketstation_Data\Managed\</GameFolder>
-	</PropertyGroup>
-
+    <Import Project="$(SolutionDir)global.VS.props" />
+    <Import Project="$(SolutionDir)globalRefs.VS.props" />
+    
 	<ItemGroup>
-		<PackageReference Include="UnityEngine.Modules" Version="2022.3.7" />
+	  <ProjectReference Include="..\libs\LaunchPad\LaunchPadBooster\LaunchPadBooster\LaunchPadBooster.csproj" />
 	</ItemGroup>
 
-	<ItemGroup Condition="Exists($(GameFolder))">
-		<Reference Include="Assembly-CSharp" Publicize="true">
-			<HintPath>$(GameFolder)Assembly-CSharp.dll</HintPath>
-		</Reference>
-	</ItemGroup>
+    <PropertyGroup>
+        <DestinationFolder>$(MyStationeersDir)mods\</DestinationFolder>
+    </PropertyGroup>
+    <ItemGroup>
+        <_BundleItems Include="$(ProjectDir)Bundle\**\*.*" />
+    </ItemGroup>
+    <Target Name="CopyDLLs" AfterTargets="Build" Condition="Exists($(DestinationFolder))">
+        <Message Text="Executing CopyDLLs task" Importance="High" />
 
-	<ItemGroup>
-		<_BundleItems Include="$(ProjectDir)Bundle\**\*.*" />
-	</ItemGroup>
+        <Copy SourceFiles="$(TargetDir)$(ProjectName).dll;$(TargetDir)$(ProjectName).pdb" DestinationFolder="$(DestinationFolder)$(ProjectName)" />
+        <Copy SourceFiles="@(_BundleItems)" DestinationFolder="$(DestinationFolder)$(ProjectName)\%(RecursiveDir)" />
 
-	<ItemGroup>
-	  <Reference Include="0Harmony">
-	    <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Stationeers\BepInEx\core\0Harmony.dll</HintPath>
-	  </Reference>
-	  <Reference Include="Assembly-CSharp">
-	    <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Stationeers\rocketstation_Data\Managed\Assembly-CSharp.dll</HintPath>
-	  </Reference>
-	  <Reference Include="BepInEx">
-	    <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Stationeers\BepInEx\core\BepInEx.dll</HintPath>
-	  </Reference>
-	</ItemGroup>
-
-	<Target Name="CopyDLLs" AfterTargets="Build" Condition="Exists($(DestinationFolder))">
-		<Message Text="Executing CopyDLLs task" Importance="High" />
-
-		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll;$(TargetDir)$(ProjectName).pdb" DestinationFolder="$(DestinationFolder)$(ProjectName)" />
-		<Copy SourceFiles="@(_BundleItems)" DestinationFolder="$(DestinationFolder)$(ProjectName)\%(RecursiveDir)" />
-
-		<Message Text="Copied build files" Importance="High" />
-	</Target>
+        <Message Text="Copied build files" Importance="High" />
+    </Target>
 </Project>

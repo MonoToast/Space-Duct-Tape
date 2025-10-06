@@ -5,6 +5,16 @@ VisualStudioVersion = 17.14.36414.22 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space Duct Tape", "Space Duct Tape\Space Duct Tape.csproj", "{A1B119DE-6A1A-469B-A505-2E2622104B9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StationeersMods.Interface", "libs/LaunchPad/Compatibility/StationeersMods.Interface/StationeersMods.Interface.csproj", "{3adb58e4-4e36-4e7d-bf51-efacae979ec6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StationeersMods.Shared", "libs/LaunchPad/Compatibility/StationeersMods.Shared/StationeersMods.Shared.csproj", "{1aa11c13-774b-44e9-aab1-4d963e01e6af}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RG.ImGui", "libs/LaunchPad/Compatibility/RG.ImGui/RG.ImGui.csproj", "{36de1849-6373-4cbd-a9ea-a8a2afb4047a}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StationeersLaunchPad", "libs/LaunchPad/StationeersLaunchPad/StationeersLaunchPad.csproj", "{99aa5fa7-3c70-4213-ada2-d6d745c38ac1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaunchPadBooster", "libs/LaunchPad/LaunchPadBooster/LaunchPadBooster/LaunchPadBooster.csproj", "{9544610a-20e3-4bb0-93c6-6f11701cca5d}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
