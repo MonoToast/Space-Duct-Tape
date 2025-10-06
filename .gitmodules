@@ -1,0 +1,3 @@
+[submodule "libs/LaunchPad"]
+	path = libs/LaunchPad
+	url = https://github.com/StationeersLaunchPad/StationeersLaunchPad.git
